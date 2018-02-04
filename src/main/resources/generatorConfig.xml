@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry
+            location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" />
+
+    <context id="context1" targetRuntime="MyBatis3">
+        <jdbcConnection connectionURL="jdbc:mysql://192.168.227.100:3306/ilike?characterEncoding=utf8"
+                        driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成model层 -->
+        <javaModelGenerator targetPackage="ilove.mybatis.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成mapper文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" />
+
+        <!-- 生成dao层 -->
+        <javaClientGenerator targetPackage="ilove.mybatis.dao"
+                             targetProject="src/main/java" type="XMLMAPPER" />
+
+
+        <table schema="world" tableName="user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+            <columnOverride column="id" javaType="java.lang.Long"
+                            jdbcType="BIGINT" />
+        </table>
+    </context>
+</generatorConfiguration>
